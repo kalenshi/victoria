@@ -29,7 +29,7 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template("victoria/about.html")
+    return render_template("victoria/about.html", title="About")
 
 
 @app.errorhandler(werkzeug.exceptions.NotFound)
