@@ -1,0 +1,8 @@
+# folders
+.git
+.idea/
+venv/
+env/
+__pycache__/
+
+
