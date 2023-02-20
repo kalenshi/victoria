@@ -1,0 +1,4 @@
+# These are some things that i feel are worth Remembering
+## When initializing the database,assuming the database instance is db,
+## Run db.create_all()
+## db.drop_all() will remove all the tables in the database and start afresh
