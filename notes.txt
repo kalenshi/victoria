@@ -2,3 +2,16 @@
 ## When initializing the database,assuming the database instance is db,
 ## Run db.create_all()
 ## db.drop_all() will remove all the tables in the database and start afresh
+
+#### Explaining the circular imports in models####
+
+# Anytime python imports something from a module, it still runs that entire module
+# when running the application from the command line, we use python app.py
+# Python goes in the app and starts importing, when it reaches the model imports, it goes int the
+# models module, user in the case, and runs that module,
+# in there, it has to import bd from app,which means it has to run app (again) and go through the
+# imports again. when it reaches the imports on the models (User since it's the first)
+# it recognizes that it was in the user module but didn't see the User model
+# Because that model was below the import db,where it stopped to go back to the app module.
+# So python will complain that it can't import the User model. This is why it fails on the User
+# import and not on the db import
