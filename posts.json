@@ -118,5 +118,17 @@
     "title": "My Latest Updated Post",
     "content": "Erat expetenda definitionem id eos. Semper suscipit eum ut, eum ex nemore copiosae. Nam probatus pertinacia eu! No alii voluptua abhorreant nec, te pro impedit concludaturque, in sea malis torquatos disputationi! Nam te alii nobis ponderum, ei fugit accusamus pro.\r\n\r\nCongue salutandi ex eam! Mei an prima consulatu, erat detracto eu quo? Vim ea esse utinam efficiantur, at noster dicunt.",
     "user_id": 1
+  },
+  {
+    "author": "Kalenshi Katebe",
+    "title": "blog post 1",
+    "content": "The first post content",
+    "date_posted": "November 26 2020"
+  },
+  {
+    "author": "Musonda Chinyimba",
+    "title": "Journey to Canada",
+    "content": "The first step of the Journey is to actually take that first step",
+    "date_posted": "December 5 2020"
   }
 ]
