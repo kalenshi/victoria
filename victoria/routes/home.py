@@ -17,4 +17,4 @@ posts_data = [
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("victoria/home.html", posts=posts_data)
+    return render_template("victoria/home.html", posts=posts_data, title="Home")
