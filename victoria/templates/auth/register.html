@@ -4,26 +4,26 @@
 <h1>Register An Account</h1>
 <div class="content-section">
     <form method="POST" action="">
-        {{register_form.hidden_tag()}}
+        {{update_form.hidden_tag()}}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Join Today</legend>
             <div class="form-group">
-                {{register_form.first_name.label(class="form-control-label")}}
-                {% if register_form.first_name.errors %}
-                {{register_form.first_name(class="form-control form-control-lg is-invalid")}}
+                {{update_form.first_name.label(class="form-control-label")}}
+                {% if update_form.first_name.errors %}
+                {{update_form.first_name(class="form-control form-control-lg is-invalid")}}
                 <div class="invalid-feedback">
-                    {% for error in register_form.first_name.errors %}
+                    {% for error in update_form.first_name.errors %}
                     <span>{{error}}</span>
                     {% endfor %}
                 </div>
                 {% else %}
-                {{register_form.first_name(class="form-control form-control-lg")}}
+                {{update_form.first_name(class="form-control form-control-lg")}}
                 {% endif %}
 
             </div>
             <div class="form-group">
-                {{register_form.last_name.label(class="form-control-label")}}
-                {% if register_form.last_name.errors %}
+                {{update_form.last_name.label(class="form-control-label")}}
+                {% if update_form.last_name.errors %}
                 {{register_form.last_name(class="form-control form-control-lg is-invalid ")}}
                 <div class="invalid-feedback">
                     {% for error in register_form.lastname.errors %}
