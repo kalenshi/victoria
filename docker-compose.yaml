@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  victoria-app:
+    build: .
+    image: victoria_victoria-app:latest
+    depends_on:
+      - mysql-db
+      - postgres-db
+    volumes:
+      - ./victoria:/app/victoria
+    ports:
+    - "5000:5000"
+
+  mysql-db:
+    image: mysql:8.0
+    volumes:
+      - mysql-db-volume:/var/lib/mysql
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_DATABASE: victoria_db
+      MYSQL_ROOT_PASSWORD: F8YdLl4VwBTPLYo1yyWy
+      MYSQL_PASSWORD: FJcuf5dhRMQrjj
+      MYSQL_USER: victoria
+    restart: always
+
+  postgres-db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: victoria
+      POSTGRES_PASSWORD: victoria
+      POSTGRES_DB: victoria_db
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - "5432:5432"
+
+volumes:
+  mysql-db-volume:
+  postgres-db-volume:
+
