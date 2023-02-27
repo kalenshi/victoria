@@ -3,7 +3,7 @@ from flask_login import login_user, current_user
 
 from victoria.models import User
 from victoria.forms import LoginForm
-from victoria import app, bcrypt
+from victoria import app, bcrypt, db
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -12,11 +12,12 @@ def login():
     if current_user.is_authenticated:
         return redirect(location=url_for("home"))
     if login_form.validate_on_submit():
-        user = User.query.filter_by(email=login_form.email.data).first()
+        user = db.session.execute(
+            db.select(User).filter_by(email=login_form.email.data)
+        ).scalar_one()
         if user and bcrypt.check_password_hash(user.password, login_form.password.data):
             login_user(user, remember=login_form.remember.data)
             next_page = request.args.get("next")
-
             return redirect(next_page) if next_page else redirect(location=url_for("home"))
         else:
             flash("Login unsuccessful.Please check email and password", category="danger")

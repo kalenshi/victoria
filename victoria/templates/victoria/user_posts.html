@@ -1,16 +1,15 @@
 {% extends "./base.html" %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-
-{% for post in posts %}
 <article class="media content-section">
-    <img class="rounded-circle article-img"
-         src="{{url_for('static',filename='media/profile_pics/'+post.author.image_file)}}">
+    <h1>Posts by {{user.first_name}}</h1>
+</article>
+{% for post in posts %}
+
+<article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="{{url_for('user_posts',user_id=post.author.id)}}">
-                {{post.author.first_name}}
-            </a>
+                Posted on
             <small class="text-muted">{{ post.date_posted.strftime("%Y-%m-%d") }}</small>
 
         </div>

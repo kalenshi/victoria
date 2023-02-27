@@ -3,7 +3,7 @@ version: "3"
 services:
   victoria-app:
     build: .
-    image: victoria_victoria-app:latest
+    image: victoria-app:latest
     depends_on:
       - mysql-db
       - postgres-db
