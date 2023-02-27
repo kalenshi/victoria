@@ -1,6 +1,10 @@
 {% extends "./base.html" %}
-{% block title %}Home{% endblock title %}
-{% block body %}
-<h1>OOPS The page You're looking for Doesn't Exist!</h1>
-<h2><button><a href="{{url_for('home')}}">Back to life</a></button></h2>
-{% endblock body %}
+{% block content %}
+<h1>{{error.name}}</h1>
+<p>{{error.description}}</p>
+
+
+<div>
+    <a class="btn btn-primary" href="{{url_for('home')}}">Back to life</a>
+</div>
+{% endblock content %}
