@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -18,8 +19,8 @@ mail_conf = {
     "MAIL_PORT": 465,
     "MAIL_USE_SSL": True,
     "MAIL_USE_TLS": False,
-    "MAIL_USERNAME": "mail@kalenshi.com",
-    "MAIL_PASSWORD": "$$_BBros378_%%",
+    "MAIL_USERNAME": os.environ.get("MAIL_USERNAME"),
+    "MAIL_PASSWORD": os.environ.get("MAIL_PASSWORD"),
 }
 app.config.update(mail_conf)
 db = SQLAlchemy(app)
