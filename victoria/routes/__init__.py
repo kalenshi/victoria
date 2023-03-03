@@ -11,6 +11,8 @@ from .user_posts import user_posts
 from .update_post import update_post
 from .forbidden import forbidden
 from .delete_post import delete_post
+from .request_reset import request_reset
+from .reset_password import reset_password
 
 __all__ = [
     "about",
@@ -26,4 +28,6 @@ __all__ = [
     "update_post",
     "forbidden",
     "delete_post",
+    "request_reset",
+    "reset_password",
 ]

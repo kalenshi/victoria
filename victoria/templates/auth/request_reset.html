@@ -1,0 +1,20 @@
+{% extends "./base.html" %}
+{% block title %}{{title}}{% endblock title %}
+{% block content %}
+<h1>Request Password Reset</h1>
+<div class="content-section">
+    <form method="POST" action="">
+        {{reset_form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Reset Password</legend>
+            <div class="form-group">
+                {{reset_form.email.label(class="form-control-label")}}
+                {{reset_form.email(class="form-control form-control-lg")}}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{reset_form.reset(class="btn btn-outline-info")}}
+        </div>
+    </form>
+</div>
+{% endblock content %}
