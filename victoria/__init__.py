@@ -5,31 +5,40 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 
+from victoria.config import Config
+
 # App initializations
-app = Flask(__name__)
-
-app.config["SECRET_KEY"] = "ddbbb12fff42fa84db757a1bf1027f63"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
-# Mail configs
-mail_conf = {
-    "MAIL_SERVER": "server170.web-hosting.com",
-    "MAIL_PORT": 465,
-    "MAIL_USE_SSL": True,
-    "MAIL_USE_TLS": False,
-    "MAIL_USERNAME": os.environ.get("MAIL_USERNAME"),
-    "MAIL_PASSWORD": os.environ.get("MAIL_PASSWORD"),
-}
-app.config.update(mail_conf)
-db = SQLAlchemy(app)
-app.app_context().push()
-bcrypt = Bcrypt(app)
-mail = Mail(app)
-login_manager = LoginManager(app)
-login_manager.login_view = "login"
+db = SQLAlchemy()
+
+bcrypt = Bcrypt()
+mail = Mail()
+login_manager = LoginManager()
+login_manager.login_view = "users_bp.login"
 login_manager.login_message_category = "info"
 
-# Routes
-from .routes import home, about, register, login, pagenotfound
+
+def creat_app(config_class=Config):
+    """
+
+    """
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    # Extensions
+    db.init_app(app)
+    bcrypt.init_app(app)
+    mail.init_app(app)
+    login_manager.init_app(app)
+    # Routes
+    from victoria.users.routes import users_bp
+    from victoria.main.routes import main_bp
+    from victoria.posts.routes import posts_bp
+
+    # Register blueprints
+    app.register_blueprint(users_bp)
+    app.register_blueprint(main_bp)
+    app.register_blueprint(posts_bp)
+
+    return app
