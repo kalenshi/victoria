@@ -15,7 +15,7 @@ def load_user(user_id):
     Gets a user from the database by specified id
 
     Args:
-        user_id (int): The users primary key id
+        user_id (int): The users_bp primary key id
 
     Returns:
         User: the user from the database
@@ -36,11 +36,11 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), default="default.png", nullable=True)
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship("Post", backref="author", lazy=True)  # This isn't an actual attribute
-
     # It runs an extra query on the Posts model to grab any posts by this user
+
     def __int__(self, first_name, last_name, email, password, image_file="default.png"):
         """
-        Initializes the User mmodel
+        Initializes the User model
 
         Returns:
              None
