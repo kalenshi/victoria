@@ -4,5 +4,3 @@ functionality
 """
 from .routes.home import home
 from .routes.about import about
-from .routes.pagenotfound import pagenotfound
-from .routes.forbidden import forbidden
