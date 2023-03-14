@@ -101,3 +101,5 @@
             └── send_mail.py
 
 ```
+***
+### Above is a structure of the repository

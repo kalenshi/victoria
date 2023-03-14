@@ -21,7 +21,11 @@ def save_picture(form_picture):
     picture_path = os.path.join(current_app.root_path, "static", "media", "profile_pics", file_name)
     # Resize the image before saving it
     output_size = (125, 125)  # The dimensions of the photo we want
-    image = Image.open(form_picture)
-    image.thumbnail(output_size)
-    image.save(picture_path)
+    try:
+        image = Image.open(form_picture)
+        image.thumbnail(output_size)
+        image.save(picture_path)
+    except FileNotFoundError:
+        file_name = "default.png"
+
     return file_name
